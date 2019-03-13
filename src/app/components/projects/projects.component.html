@@ -1,0 +1,18 @@
+<div class="row pt-5">
+    <div class="col-md-3 col-sm-12" *ngFor="let project of projects">
+
+        <div class="card  m-2">
+            <a [routerLink]="['/project',project._id]" style="text-decoration: none !important">
+              <img src="{{url+'get-image/'+project.image}}"  class="card-img-top" alt="...">
+            </a>
+          <div class="card-body">
+            <a [routerLink]="['/project',project._id]" style="text-decoration: none !important">
+              <h5 class="card-title">{{ project.name }}</h5>
+            </a>
+              <p class="card-text">{{ project.description }}</p>
+
+              <a [routerLink]="['/project',project._id]"  class="btn btn-primary">Ver Proyecto</a>
+          </div>
+        </div>
+    </div>
+</div>

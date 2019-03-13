@@ -1,0 +1,38 @@
+/* Importar fonts  */
+
+@font-face{
+  font-family: 'Coiny';
+  src: url('../../../assets/fonts/Coiny-Regular.ttf')
+ }
+ @font-face{
+   font-family: 'IndieFlower';
+   src: url('../../../assets/fonts/IndieFlower.ttf')
+  }
+  @font-face{
+   font-family: 'Pacifico';
+   src: url('../../../assets/fonts/Pacifico-Regular.ttf')
+  }
+
+  /* estilos generales del componente about */
+
+#title{
+  font-family: 'Pacifico',Georgia, 'Times New Roman', Times, serif;
+  font-size: 60px;
+  border-bottom: 1px solid #ccc;
+  width: 70%;
+  margin: 0px auto;
+  padding-bottom: 20px;
+  color: #008b8b ;
+}
+.subtitle{
+  color: gray;
+}
+.sobre-mi{
+  font-weight: bold;
+  padding-bottom: 30px;
+  color: #003f3f;
+}
+.datos{
+  padding-bottom: 20px;
+}
+

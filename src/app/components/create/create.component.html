@@ -1,0 +1,70 @@
+
+<div class="row pt-4" >
+    <div class="col-md-3"></div>
+    <div class="col-md-6 order-md-1" *ngIf="project">
+      <h4 class="mb-3 text-uppercase">{{ title }}</h4>
+      <!-- notificacion -->
+      <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="status == 'success'">
+          El proyecto se guardo satisfactoriamente puedes verlo <a [routerLink]="['/project',save_project._id]">aquí</a>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="status == 'failed'">
+          <strong>Oh no!</strong>No se pudo registrar el proyecto debe completar todos los campos
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+    <!-- FORMULARIO DE PROYECTOS -->
+      <form class="needs-validation" novalidate #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="">Nombre</label>
+            <input type="text" class="form-control" id="" name="nombre" required #nombre="ngModel" [(ngModel)]="project.name">
+            <div class="invalid-feedback">
+              El nombre de proyecto es requerido.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="">Categoría</label>
+            <input type="text" class="form-control" id="" placeholder=""  required name="category" #category="ngModel" [(ngModel)]="project.category">
+            <div class="invalid-feedback">
+              La categoria del proyecto es requerido.
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="">Descripción</label>
+          <textarea class="form-control" id="" required placeholder="Descripcion del proyecto" name="description" #description="ngModel" [(ngModel)]="project.description"></textarea>
+          <div class="invalid-feedback">
+            Por favor ingrese una descripción.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="">Año de lanzamiento</label>
+          <input type="text" class="form-control" id=""  name="year"  required #year="ngModel" [(ngModel)]="project.year">
+          <div class="invalid-feedback">
+            Por favor ingrese un año.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address2">Lenguajes utilizados</label>
+          <input type="text" class="form-control" id="" required name="langs" #langs="ngModel" [(ngModel)]="project.langs">
+        </div>
+        <div class="col-md-6" *ngIf="project.image" id="imagemod">
+            <img src="{{ url+'get-image/'+project.image}}" class="w-100 h-100" alt="...">
+        </div>
+        <div class="form-group">
+            <label for="">Imagen del proyecto</label>
+            <input type="file" class="form-control-file"  (change)="imagen($event)"  required id="fileInput" name="image" #image="ngModel" [(ngModel)]="imageValid" >
+        </div>
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" id="Ingresar" type="submit" [disabled]="!projectForm.form.valid && !project.image">Registrar Proyecto</button>
+      </form>
+  </div>
+</div>
+

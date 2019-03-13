@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center p-5" *ngIf="project">
+  <div class="card mb-3" style="">
+    <div class="row no-gutters">
+      <div class="col-md-6" *ngIf="project.image">
+        <img src="{{ url+'get-image/'+project.image}}" class="w-100 h-100" alt="...">
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          <h5 class="card-title">{{ project.name }}</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+             Animi corporis aliquam nesciunt ab ex, earum odio doloribus ea repellat,
+            ad accusamus voluptatem, suscipit necessitatibus amet quod. Officiis animi
+            suscipit asperiores.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <div *ngIf="confirm == false">
+              <button class="btn btn-warning m-1" [routerLink]="['/edit',project._id]">Modificar</button>
+              <button class="btn btn-outline-danger m-1" (click)="setConfirm(true)">Eliminar</button>
+          </div>
+          <div *ngIf="confirm == true">
+            <p>¿Estas seguro de eliminar el proyecto?</p>
+              <button class="btn btn-light m-1"   (click)="setConfirm(false)">Cancelar</button>
+              <button class="btn btn-danger m-1" (click)="deleteProject(project._id)">Eliminar definitivamente</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
